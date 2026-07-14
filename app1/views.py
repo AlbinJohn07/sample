@@ -9347,17 +9347,3 @@ def trigger_all_notification_types(request):
         return Response({'message': f'Created {len(created_notifications)} notifications', 'count': len(created_notifications)}, status=status.HTTP_201_CREATED)
     except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
-@api_view(['DELETE'])
-def delete_all_notifications(request):
-    if not request.user.is_authenticated:
-        return Response({'error': 'Authentication required'}, status=status.HTTP_401_UNAUTHORIZED)
-
-    try:
-        deleted_count = Notification.objects.filter(
-            Q(recipient=request.user) | Q(recipient_email=request.user.email)
-        ).delete()[0]
-        return Response({'message': f'Deleted {deleted_count} notifications', 'count': deleted_count}, status=status.HTTP_200_OK)
-    except Exception as e:
-        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
