@@ -102,17 +102,6 @@ DATABASES = {
 
 
 
-# settings.py
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-EMAIL_HOST = 'mail.vbsai.com'             # Outgoing SMTP server
-EMAIL_PORT = 465                          # SSL port
-EMAIL_USE_SSL = True                      # Use SSL (not TLS)
-
-EMAIL_HOST_USER = 'albin.john@vbsai.com'  # Your full webmail email
-EMAIL_HOST_PASSWORD = 'Albin@123'     # The email password
-
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
